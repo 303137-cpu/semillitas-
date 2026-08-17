@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semillitas — Psicología Infantil</title>
+<meta name="description" content="Acompañamos el crecimiento emocional de tus hijos con amor y ciencia. Terapia infantil, orientación a padres y terapia de juego con la Lic. Paulina González.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF6EE;
+    --forest:#2E3D2A;
+    --sage:#7C9473;
+    --sage-light:#E4EADE;
+    --rose:#D6879A;
+    --rose-deep:#B96580;
+    --line:#DCD4C2;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--forest);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
+  section{position:relative; padding:120px 0;}
+
+  /* growth vine — signature element */
+  .vine{
+    position:fixed; left:18px; top:0; bottom:0; width:36px;
+    z-index:50; pointer-events:none; display:flex; align-items:center;
+  }
+  .vine svg{height:96vh; width:36px;}
+  .vine-path{
+    fill:none; stroke:var(--sage); stroke-width:2.5; stroke-linecap:round;
+    stroke-dasharray:2000; stroke-dashoffset:2000;
+    transition:stroke-dashoffset .1s linear;
+  }
+  .vine-seed{
+    position:absolute; bottom:2vh; left:11px; font-size:20px;
+    opacity:0.9;
+  }
+  @media (max-width:860px){ .vine{display:none;} }
+
+  /* nav */
+  header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(250,246,238,0.9); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:1080px; margin:0 auto; padding:18px 32px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .logo{font-family:'Fraunces', serif; font-weight:600; font-size:22px; color:var(--forest);}
+  .logo span{color:var(--rose-deep);}
+  nav a.cta{
+    background:var(--forest); color:var(--cream); text-decoration:none;
+    padding:10px 22px; border-radius:30px; font-size:14px; letter-spacing:.02em;
+  }
+
+  /* hero */
+  .hero{padding-top:100px; padding-bottom:100px;}
+  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center;}
+  .eyebrow{
+    display:inline-block; font-size:13px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--sage); font-weight:600; margin-bottom:18px;
+  }
+  .hero h1{font-size:clamp(34px,4.4vw,54px); max-width:640px;}
+  .hero p.lede{font-size:19px; font-style:italic; color:#5C6B54; margin-top:22px; max-width:460px;}
+  .hero-img{border-radius:24px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(46,61,42,.25);}
+  .stats-row{display:flex; gap:48px; margin-top:56px;}
+  .stat b{display:block; font-family:'Fraunces',serif; font-size:32px; color:var(--rose-deep);}
+  .stat span{font-size:13px; color:#6b7565;}
+
+  /* section headers */
+  .kicker{font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--rose-deep); font-weight:600; margin-bottom:10px;}
+  .section-title{font-size:clamp(26px,3vw,38px); max-width:640px; margin-bottom:18px;}
+  .section-desc{max-width:600px; color:#5C6B54; font-size:16px;}
+
+  /* about */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; margin-top:50px;}
+  .pillars{display:flex; gap:28px; margin-top:32px; flex-wrap:wrap;}
+  .pillar{flex:1; min-width:140px;}
+  .pillar .ic{font-size:22px;}
+  .pillar h4{font-size:15px; margin:8px 0 4px;}
+  .pillar p{font-size:13px; color:#6b7565;}
+  .about-img{border-radius:20px; overflow:hidden;}
+
+  /* cards grid */
+  .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:48px;}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px;}
+  .card{
+    background:#fff; border:1px solid var(--line); border-radius:18px; padding:28px 24px;
+  }
+  .card h4{font-size:17px; margin-bottom:8px;}
+  .card p{font-size:14px; color:#5C6B54;}
+  .card .num{font-family:'Fraunces',serif; color:var(--sage); font-size:14px; margin-bottom:10px; display:block;}
+
+  .alt{background:var(--sage-light);}
+
+  /* two column with lists */
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:48px;}
+  .panel{background:#fff; border-radius:20px; padding:36px; border:1px solid var(--line);}
+  .panel h3{font-size:21px; margin-bottom:12px;}
+  .panel ul{margin-top:16px; padding-left:0; list-style:none;}
+  .panel li{font-size:14px; padding:8px 0; border-top:1px solid var(--line); color:#4A5842;}
+  .panel li:first-child{border-top:none;}
+
+  /* process */
+  .process-copy{max-width:720px; margin-top:24px; font-size:16px; color:#4A5842;}
+
+  /* testimonials */
+  .testi{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px;}
+  .testi blockquote{
+    background:#fff; border-left:3px solid var(--rose); border-radius:0 16px 16px 0;
+    padding:26px 24px; font-size:15px; font-style:italic; color:#3d4a37;
+  }
+  .testi cite{display:block; margin-top:16px; font-style:normal; font-size:13px; font-weight:600; color:var(--rose-deep);}
+
+  /* contact */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:48px;}
+  .contact-item{margin-bottom:26px;}
+  .contact-item h4{font-size:15px; margin-bottom:4px;}
+  .contact-item p{font-size:15px; color:#4A5842;}
+  .contact-cta{background:var(--forest); color:var(--cream); border-radius:20px; padding:40px; display:flex; flex-direction:column; justify-content:center;}
+  .contact-cta h3{color:var(--cream); font-size:24px; margin-bottom:14px;}
+  .btn{
+    display:inline-block; background:var(--rose); color:#fff; text-decoration:none;
+    padding:14px 28px; border-radius:30px; font-size:14px; margin-top:20px; width:fit-content;
+  }
+
+  footer{padding:40px 0; text-align:center; font-size:13px; color:#8b9382; border-top:1px solid var(--line);}
+
+  @media (max-width:860px){
+    .hero-grid, .about-grid, .two-col, .contact-grid{grid-template-columns:1fr;}
+    .grid-4{grid-template-columns:repeat(2,1fr);}
+    .grid-3, .testi{grid-template-columns:1fr;}
+    .stats-row{gap:32px; flex-wrap:wrap;}
+    section{padding:80px 0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="vine" aria-hidden="true">
+  <svg viewBox="0 0 36 800" preserveAspectRatio="none">
+    <path class="vine-path" id="vinePath" d="M18 800 C 10 720, 26 640, 18 560 C 10 480, 26 400, 18 320 C 10 240, 26 160, 18 80 C 14 40, 20 10, 18 0"/>
+  </svg>
+  <div class="vine-seed">🌱</div>
+</div>
+
+<header>
+  <nav>
+    <div class="logo">semillitas<span>.</span></div>
+    <a class="cta" href="https://wa.me/523318349695?text=Hola%2C%20queremos%20agendar%20una%20cita" target="_blank" rel="noopener">Agendar sesión</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Psicología Infantil</span>
+      <h1>Acompañamos el crecimiento emocional de tus hijos con amor y ciencia</h1>
+      <p class="lede">"Cultivando el bienestar emocional de tus pequeños desde la raíz."</p>
+      <div class="stats-row">
+        <div class="stat"><b>8+</b><span>Años de experiencia</span></div>
+        <div class="stat"><b>500+</b><span>Familias atendidas</span></div>
+        <div class="stat"><b>4</b><span>Servicios especializados</span></div>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://cdn.gamma.app/1266glmbw5h0if7/026f7c79c7674ad1b2e652d6757fdbec/original/ChatGPT-Image-Jul-24-2026-08_16_31-PM.png" alt="Semillitas — acompañamiento emocional infantil">
+    </div>
+  </div>
+</section>
+
+<section id="sobre-nosotros" class="alt">
+  <div class="wrap about-grid">
+    <div>
+      <span class="kicker">Sobre nosotros</span>
+      <h2 class="section-title">Conoce a la Lic. Paulina González</h2>
+      <p class="section-desc">Psicóloga infantil certificada con más de 8 años de experiencia acompañando a niños y familias. Su enfoque integra la evidencia científica con un trato profundamente humano, creando un espacio donde cada niño se siente seguro para expresarse a través del juego y el diálogo.</p>
+      <p class="section-desc" style="margin-top:14px;">En Semillitas, cada sesión es una oportunidad para sembrar herramientas emocionales que durarán toda la vida.</p>
+      <div class="pillars">
+        <div class="pillar"><div class="ic">🌱</div><h4>Amor</h4><p>Base de todo proceso terapéutico</p></div>
+        <div class="pillar"><div class="ic">🤝</div><h4>Respeto</h4><p>Por el ritmo de cada niño</p></div>
+        <div class="pillar"><div class="ic">🔬</div><h4>Ciencia</h4><p>Metodologías con respaldo científico</p></div>
+      </div>
+    </div>
+    <div class="about-img">
+      <img src="https://cdn.gamma.app/1266glmbw5h0if7/026f7c79c7674ad1b2e652d6757fdbec/original/ChatGPT-Image-Jul-24-2026-08_16_31-PM.png" alt="Espacio terapéutico Semillitas">
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="wrap">
+    <span class="kicker">Nuestros servicios</span>
+    <h2 class="section-title">¿En qué podemos ayudarte?</h2>
+    <p class="section-desc">Ofrecemos un enfoque integral para acompañar el bienestar emocional, conductual y el desarrollo de tus hijos en cada etapa de su crecimiento.</p>
+    <div class="grid-4">
+      <div class="card"><span class="num">01</span><h4>Terapia Infantil</h4><p>Manejo de emociones, ansiedad, autoestima y comportamiento con técnicas especializadas.</p></div>
+      <div class="card"><span class="num">02</span><h4>Orientación a Padres</h4><p>Herramientas prácticas de crianza respetuosa para fortalecer el vínculo familiar.</p></div>
+      <div class="card"><span class="num">03</span><h4>Evaluación del Desarrollo</h4><p>Diagnóstico y acompañamiento en etapas clave del crecimiento.</p></div>
+      <div class="card"><span class="num">04</span><h4>Terapia de Juego</h4><p>El juego como lenguaje natural del niño para facilitar la comunicación emocional.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="terapia-infantil" class="alt">
+  <div class="wrap">
+    <span class="kicker">Terapia infantil</span>
+    <h2 class="section-title">Un espacio seguro para sentir y crecer</h2>
+    <p class="section-desc">Trabajamos con ansiedad, miedos, cambios de comportamiento, dificultades escolares y autoestima, siempre desde un enfoque lúdico y respetuoso.</p>
+    <div class="grid-3">
+      <div class="card"><h4>Ansiedad y miedos</h4><p>Estrategias prácticas para que tu hijo gestione la ansiedad y los miedos cotidianos.</p></div>
+      <div class="card"><h4>Autoestima y confianza</h4><p>Fortalecemos la imagen positiva de sí mismos desde una edad temprana.</p></div>
+      <div class="card"><h4>Conducta y límites</h4><p>Comprender el origen del comportamiento para transformar desde la raíz.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="juego-padres">
+  <div class="wrap">
+    <span class="kicker">Para toda la familia</span>
+    <h2 class="section-title">Terapia de juego y orientación a padres</h2>
+    <div class="two-col">
+      <div class="panel">
+        <h3>🎨 Terapia de Juego</h3>
+        <p>El juego es el lenguaje natural de los niños. A través de esta metodología especializada, los pequeños expresan emociones, procesan experiencias y desarrollan habilidades sociales de forma espontánea y significativa.</p>
+        <ul>
+          <li>Juego simbólico y narrativo</li>
+          <li>Expresión artística y creativa</li>
+          <li>Técnicas proyectivas adaptadas</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>👨‍👩‍👧 Orientación a Padres</h3>
+        <p>Ser papá o mamá es uno de los retos más grandes. Te ofrecemos herramientas concretas de crianza respetuosa para fortalecer el vínculo y acompañar el desarrollo emocional desde casa.</p>
+        <ul>
+          <li>Sesiones individuales para padres</li>
+          <li>Talleres de crianza positiva</li>
+          <li>Guías prácticas personalizadas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="por-que" class="alt">
+  <div class="wrap">
+    <span class="kicker">¿Por qué Semillitas?</span>
+    <h2 class="section-title">Un espacio pensado para ellos, construido con ustedes</h2>
+    <p class="section-desc">En Semillitas, cada detalle está diseñado para que los niños se sientan seguros y los padres se sientan acompañados.</p>
+    <div class="grid-4">
+      <div class="card"><h4>Atención Personalizada</h4><p>Adaptamos el proceso al ritmo, personalidad y necesidades de cada niño.</p></div>
+      <div class="card"><h4>Ambiente Seguro</h4><p>Espacio libre de juicios donde los niños pueden ser ellos mismos.</p></div>
+      <div class="card"><h4>Alianza con Padres</h4><p>Los padres son parte activa del proceso. Trabajamos juntos como equipo.</p></div>
+      <div class="card"><h4>Enfoque Integral</h4><p>Combinamos evidencia científica con calidez humana en cada sesión.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <span class="kicker">Nuestro proceso</span>
+    <h2 class="section-title">¿Cómo es el proceso de atención?</h2>
+    <p class="process-copy">El proceso inicia con una entrevista exclusiva para padres, donde conocemos la historia y contexto familiar. Después, el niño o niña participa en sesiones de valoración a través del juego. Finalmente, compartimos los resultados y diseñamos juntos un plan de acompañamiento personalizado.</p>
+  </div>
+</section>
+
+<section id="testimonios" class="alt">
+  <div class="wrap">
+    <span class="kicker">Testimonios</span>
+    <h2 class="section-title">Lo que dicen las familias de Semillitas</h2>
+    <div class="testi">
+      <blockquote>"Llegamos con muchas dudas y miedo. Paulina nos recibió con tanta calidez que desde la primera sesión mi hijo quiso volver. Hoy vemos cambios increíbles en su confianza."<cite>— Mamá de Mateo, 6 años</cite></blockquote>
+      <blockquote>"La orientación para padres fue un regalo para nuestra familia. Aprendimos a comunicarnos mejor y a entender las emociones de nuestra hija con herramientas reales."<cite>— Papá de Valeria, 8 años</cite></blockquote>
+      <blockquote>"Semillitas no es solo un consultorio, es un espacio donde mi hijo se siente libre de ser él mismo. Gracias por tanto amor y profesionalismo."<cite>— Mamá de Santiago, 5 años</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="kicker">Contacto y ubicación</span>
+      <h2 class="section-title">¿Listo para dar el primer paso?</h2>
+      <div class="contact-item"><h4>📍 Ubicación del consultorio</h4><p>Semillitas — Psicología Infantil<br>Corona Boreal 3716, Jalisco</p></div>
+      <div class="contact-item"><h4>🕐 Horarios de atención</h4><p>Lunes a Jueves: 4:00 – 7:00 pm</p></div>
+      <div class="contact-item"><h4>💬 Contacto directo</h4><p>Teléfono: (55) 3318349695<br>WhatsApp: (52) 3318349695</p></div>
+    </div>
+    <div class="contact-cta">
+      <h3>Cada niño merece crecer con herramientas emocionales para toda la vida.</h3>
+      <p style="color:#D8E0D2; font-size:15px;">Acompañamos a tu familia con profesionalismo, amor y evidencia científica.</p>
+      <a class="btn" href="https://wa.me/523318349695?text=Hola%2C%20queremos%20agendar%20una%20cita" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> Semillitas — Psicología Infantil. Todos los derechos reservados.</div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const path = document.getElementById('vinePath');
+  const len = path.getTotalLength();
+  path.style.strokeDasharray = len;
+  path.style.strokeDashoffset = len;
+
+  function onScroll(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = Math.min(scrollTop / docHeight, 1);
+    path.style.strokeDashoffset = len - (len * progress);
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+</script>
+
+</body>
+</html>
